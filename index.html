@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <audio id="bg-music" autoplay loop muted>
+    <source src="audio/223AM.mp3" type="audio/mpeg"/>
+    Your browser does not support the audio element.
+  </audio>
+  <audio id="animal-sound">
+    <source src="audio/boing.mp3" type="audio/mpeg" />
+  </audio>
+  
+  <div class="confetti" id="confetti"></div>
+
+  <!-- Banner PNG -->
+  <div class="banner-png">
+    <img src="img/banner.png" alt="Banner Happy Birthday" />
+  </div>
+
+  <!-- Halaman 1 -->
+  <div class="page active" id="page1">
+    <h2 text-center>Hai, Alfalah Reski Syahana!</h2>
+    <h2 text-center>🐻🦊</h2>
+    <p id="typed-text" data-text="Naufall punya sesuatu buat hanaa hari ini..."></p>
+    <button onclick="nextPage()">Mulai 🎉</button>
+  </div>
+
+  <!-- Halaman 2 -->
+  <div class="page" id="page2">
+    <h2 text-center>Selamat Ulang Tahun! 🎂</h2>
+    <p id="typed-text" data-text="Meski kita bukan lagi kita, naufall tetap mendoakan yang terbaik buat hanaa 🤍
+  
+  Semoga hanaa selalu dikelilingi orang-orang baik, senyum hanaa makin tulus, dan langkah hanaa kedepannya selalu dimudahkan.
+  
+  Makasih udah pernah menjadi salah satu bagian cerita yang paling hangat di hidup naufall. Hari ini, naufall cuma mau bilang, hanaa layak bahagia sepenuhnya."> </p>
+    <button onclick="nextPage()">Lanjut ➡️</button>
+  </div>
+  
+
+  <!-- Halaman 3 -->
+  <div class="page" id="page3">
+  <h2>Teman lama hanaa hadir nih...</h2>
+  <p class="typed-text" id="typed-text" data-text="Ada satu hal yang pengen naufall sampein...
+
+Semoga hanaa selalu dikelilingi orang-orang yang sayang sama hanaa...
+orang-orang yang bisa jaga hanaa, tanpa harus ngerusak hanaa.
+
+naufall doain semua yang hanaa impiin, satu per satu, nyamperin hanaa di waktu yang paling indah.
+
+hanaa pantas bahagia dengan cara yang paling hanaa pengen. 🤍">
+</p>
+  <div class="run-wrapper">
+    <!-- Beruang -->
+    <div class="animal-run left">
+      <img src="img/bear.gif" alt="Beruang" width="150" />
+    </div>
+
+    <!-- Rubah -->
+    <div class="animal-run right">
+      <img src="img/fox.gif" alt="Rubah" width="150" />
+    </div>
+
+    <!-- Love Burst -->
+    <div class="love-burst">
+      <span>❤️</span>
+      <span>💖</span>
+      <span>💕</span>
+      <span>💘</span>
+    </div>
+  </div>
+
+  <button onclick="nextPage()">Lanjut Lagi 💌</button>
+</div>
+
+  <!-- Halaman 4 -->
+  <div class="page" id="page4">
+    <h2>Naufall cuma mau bilang...</h2>
+    <p id="typed-text" data-text="Terima kasih pernah jadi bagian paling hangat dalam hidup naufall 🤍"></p>
+    <span class="note">— Naufal Daffa Erlangga 🐻🦊</span>
+    <span text-center class="note">#DepokPride</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
