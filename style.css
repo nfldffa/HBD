@@ -6,11 +6,6 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url("img/bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
   overflow-x: hidden;
   overflow-y: auto;
   min-height: 100vh;
@@ -19,6 +14,20 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("img/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
 }
 
 /* BANNER */
@@ -220,7 +229,7 @@ button:hover {
 /* LOVE BURST */
 .love-burst {
   position: absolute;
-  top: 3%;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
