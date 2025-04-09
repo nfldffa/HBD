@@ -6,17 +6,22 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom right, #ffe0f0, #d0f8ff);
-  overflow: hidden;
-  height: 100vh;
+  background-image: url("img/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  flex-direction: column;
 }
 
-/* Banner Bendera */
+/* BANNER */
 .banner-png {
   position: absolute;
   top: 0;
@@ -27,11 +32,12 @@ body {
   max-width: 600px;
   text-align: center;
   animation: swing 3s ease-in-out infinite;
+  will-change: transform;
 }
 
 .banner-png img {
   width: 100%;
-  max-height: 120px;
+  max-height: 100px;
   object-fit: contain;
 }
 
@@ -39,24 +45,23 @@ body.hide-banner .banner-png {
   display: none;
 }
 
-
 @keyframes swing {
   0%, 100% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0) rotateZ(0deg);
   }
   50% {
-    transform: translateX(-50%) translateY(5px);
+    transform: translateX(-50%) translateY(4px) rotateZ(1deg);
   }
 }
 
-/* Halaman */
+/* PAGE */
 .page {
   display: none;
   text-align: center;
   padding: 2rem;
   width: 100%;
   max-width: 600px;
-  animation: fadeIn 1s ease forwards;
+  animation: fadeIn 0.8s ease forwards;
 }
 
 .page.active {
@@ -64,13 +69,13 @@ body.hide-banner .banner-png {
 }
 
 #page3 {
-  padding-top: 30px; /* tambahin jarak dari atas */
-  position: fixed;
+  padding-top: 60px;
+  position: relative;
   z-index: 1;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   color: #ff69b4;
   margin-bottom: 1rem;
 }
@@ -78,16 +83,18 @@ h2 {
 p, .typed-text {
   font-weight: 500;
   color: #444;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   white-space: pre-wrap;
   text-align: center;
-  min-height: 80px;
+  min-height: 60px;
+  line-height: 1.6;
 }
 
 button {
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1rem;
   font-size: 1rem;
-  background-color: #ffb6c1;
+  letter-spacing: 1.8px;
+  background-color: #ff69b4;
   border: none;
   border-radius: 30px;
   color: white;
@@ -96,9 +103,10 @@ button {
 }
 
 button:hover {
-  background-color: #ff69b4;
+  background-color: #BE5985;
 }
 
+/* GAMBAR */
 .images {
   display: flex;
   justify-content: center;
@@ -107,7 +115,7 @@ button:hover {
 }
 
 .images img {
-  width: 140px;
+  width: 130px;
   border-radius: 20px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
@@ -117,35 +125,137 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* NOTE */
 .note {
-  display: block;
   margin-top: 1.5rem;
   font-style: italic;
   color: #888;
 }
 
-/* Konfeti */
-.confetti span {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: pink;
-  border-radius: 50%;
-  opacity: 0.7;
-  animation: fall 5s linear infinite;
+/* ANIMASI HEWAN */
+.run-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  margin-top: 0px;
+  overflow: hidden;
+  pointer-events: none;
 }
 
-@keyframes fall {
+/* Beruang */
+.animal-run {
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+.animal-run.left {
+  right: -200px;
+  animation-name: bearLoop;
+}
+
+@keyframes bearLoop {
   0% {
-    transform: translateY(-10vh);
+    right: -200px;
+    opacity: 0;
+  }
+  20% {
+    right: 50%;
+    transform: translateX(70%) scaleX(1) rotate(3deg);
     opacity: 1;
+}
+  50% {
+    right: 50%;
+    transform: translateX(80%) scaleX(1) rotate(3deg);
+    opacity: 1;
+}
+  80% {
+    right: -200px;
+    opacity: 0;
   }
   100% {
-    transform: translateY(100vh);
+    right: -200px;
     opacity: 0;
   }
 }
 
+/* Rubah */
+.animal-run.right {
+  left: -200px;
+  animation-name: foxLoop;
+}
+
+.animal-run.right img {
+  transform: scaleX(1); /* Rubah tetap hadap kanan */
+}
+
+@keyframes foxLoop {
+  0% {
+    left: -200px;
+    opacity: 0;
+  }
+  20% {
+    left: 50%;
+    transform: translateX(-70%) rotate(-3deg);
+    opacity: 1;
+}
+  50% {
+    left: 50%;
+    transform: translateX(-80%) rotate(-3deg);
+    opacity: 1;
+}
+  80% {
+    left: -200px;
+    opacity: 0;
+  }
+  100% {
+    left: -200px;
+    opacity: 0;
+  }
+}
+
+/* LOVE BURST */
+.love-burst {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  animation: loveBurstLoop 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.love-burst span {
+  font-size: 1.5rem;
+  animation: floatLove 1s ease-in-out infinite alternate;
+}
+
+@keyframes floatLove {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes loveBurstLoop {
+  0%, 15%, 80%, 100% {
+    opacity: 0;
+  }
+  25%, 50% {
+    opacity: 1;
+  }
+}
+
+/* TRANSISI MASUK */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -157,7 +267,7 @@ button:hover {
   }
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 600px) {
   h2 {
     font-size: 2rem;
@@ -170,76 +280,8 @@ button:hover {
   .images img {
     width: 100px;
   }
-}
 
-/* Animasi interaksi hewan */
-.run-wrapper {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  top: 30%;
-  overflow: hidden;
-}
-
-.animal-run {
-  position: absolute;
-  bottom: 0;
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-}
-
-.animal-run.left {
-  left: -150px;
-  animation-name: moveFromLeft;
-}
-
-.animal-run.right {
-  right: -150px;
-  animation-name: moveFromRight;
-}
-
-@keyframes moveFromLeft {
-  to {
-    left: 42%;
-  }
-}
-
-@keyframes moveFromRight {
-  to {
-    right: 42%;
-  }
-}
-
-.love-burst {
-  position: absolute;
-  top: 5%;
-  bottom: 40%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  opacity: 0;
-  animation: loveBurst 2s ease-in-out 3s forwards;
-}
-
-.love-burst span {
-  font-size: 1.8rem;
-  animation: floatLove 1s ease-in-out infinite alternate;
-}
-
-@keyframes floatLove {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-15px);
-    opacity: 0.7;
-  }
-}
-
-@keyframes loveBurst {
-  to {
-    opacity: 1;
+  .love-burst span {
+    font-size: 1.2rem;
   }
 }
